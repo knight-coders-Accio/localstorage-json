@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Secret Info</h1>
+    <h2></h2>
+
+    <!-- <script src="./script.js"></script> -->
+
+    <script>
+         let jsonData = localStorage.getItem("data");
+        //  console.log(jsonData, typeof jsonData);
+            let data = JSON.parse(jsonData); // { secret: """}
+
+            let heading2 = document.querySelector('h2');
+            heading2.innerText = data.secret;
+
+    </script>
+</body>
+</html>

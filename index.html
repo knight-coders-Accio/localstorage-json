@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <p> Raw is going to Destroy ISI </p>
+
+      <form>
+            <input type="text" name="username" id="username" placeholder="username">
+            <button type="submit">Submit</button>
+      </form>
+
+      <div class="output">
+
+      </div>
+
+
+
+      <!-- <script src="./script.js"></script> -->
+
+      <script>
+
+            // get values from local storage:
+           
+            // arr = userdata;
+            // console.log(userdata, jsonData)
+
+            // console.log(arr);
+
+        let form = document.querySelector('form');
+        let username_box = document.querySelector('#username');
+        let output = document.querySelector('.output');
+
+
+        let jsonData = localStorage.getItem("userNames");
+            let userdata = JSON.parse(jsonData);
+            if(userdata != null){
+                
+            for(let t of userdata){
+                output.innerHTML = output.innerHTML + `<h2> ${t} </h2>`;
+            }
+           
+        }
+        else{
+            userdata = []
+        }
+
+        form.addEventListener('submit', checkName);
+
+         let arr = userdata
+        function checkName(event){
+          event.preventDefault();   
+
+          if(!username_box.value){
+            alert('Please enter a name');
+            return
+          }
+          arr.push(username_box.value) 
+          // store this array in localstorgae: 
+            let arrJson = JSON.stringify(arr);
+            localStorage.setItem("userNames", arrJson);
+
+            
+
+            // for(let t of arr){
+            //     output.innerHTML = output.innerHTML + `<h2> ${t} </h2>`;
+            // }
+
+
+
+          output.innerHTML = output.innerHTML + `<h2> ${username_box.value} </h2>`;
+        }
+
+
+        // delete all data from local storage:
+        // localStorage.clear();
+
+        // delete sepecific data from local storage:
+        // localStorage.removeItem("userNames");
+
+        // userNames = ["apple", ]
+        // localStorage.setItem("userNames", JSON.stringify(userNames));
+
+      </script>
+</body>
+</html>
+
+
+<!-- 
+//    let para = document.querySelector('p');
+        //    let secretMessage = { secret: para.innerText}
+
+        //    // need to add this data to browser local storage:
+        //    let secretMessageJson = JSON.stringify(secretMessage);
+        //     localStorage.setItem("data", secretMessageJson) -->
